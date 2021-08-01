@@ -1,0 +1,151 @@
+<div class="container-fluid">
+    
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand" href="#">
+        <img src="https://sellerrocket.io/wp-content/themes/sellerrocket-io/assets/images/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        <span class="ff pl-3" style="color:white">Seller Rocket</span>
+        </a>
+        <form class="form-inline my-2 my-lg-0">
+            <button (click)="logout()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+
+
+    </nav>
+
+    <div class="mt-4">
+        <button (click)="open(content)" type="button" class="btn btn-primary btn-lg">Add Address</button>
+    </div>
+    
+    
+      <h1 style="text-align:center" *ngIf="addressres;">Loding Adress... Please wait.</h1>
+    
+
+    <div class="address ff mt-4">
+        <div class="row" >
+            <div *ngFor="let address of addressArray" class="col-12 col-lg-4 col-md-4 pb-3">
+                <div  class="card" style="width: 18rem;" style="margin: 0 auto;">
+                    <div class="card-body" style="background-color: #1C8D73;border-radius:10px">
+                      <h5 class="card-title">Address Info</h5>
+                      <p class="card-text">Address:   {{address.address}}</p>
+                      <p class="card-text">Flatno: {{address.flatno}}</p>
+                      <p class="card-text">Landmark: {{address.landmark}}</p>
+                      <p class="card-text">Address Type:  {{address.address_type}}</p>
+                      <p class="card-text">User Id:  {{address.user_id}}</p>
+                      <div style="display: flex;justify-content: space-between;">
+                        <button (click)="openupdate(update,address.id)" class="btn btn-primary" style="padding:10px 60px;background-color: #6A1B4D;">Edit</button>
+                        <button (click)="delete(address.id)" class="btn btn-primary" style="padding:10px 50px;background-color: #6A1B4D;">Delete</button>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">ADD ADDRESS</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-lg 12 col-md-12">
+            <label for="inputEmail4" class="button subheadingColor">Enter Address</label>   
+            <div class="input-group">
+                <input [(ngModel)]="address"  class="form-control p-4" maxlength="50"  placeholder="Type your Address" style="border-radius: 5px;">    
+            </div> 
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-12 col-lg 12 col-md-12">
+            <label for="inputEmail4" class="button subheadingColor">Enter Flatno</label>   
+            <div class="input-group">
+                <input [(ngModel)]="flatno"  class="form-control p-4" maxlength="50"  placeholder="Type your Flatno" style="border-radius: 5px;">    
+            </div> 
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-12 col-lg 12 col-md-12">
+            <label for="inputEmail4" class="button subheadingColor">Enter Landmark</label>   
+            <div class="input-group">
+                <input [(ngModel)]="landmark"  class="form-control p-4" maxlength="50"  placeholder="Type your Landmark" style="border-radius: 5px;">    
+            </div> 
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="button otp_btn mt-3" style="margin: 0 auto;">
+            <button (click)="addAdress()"  type="submit" class="btn btn-primary btn-lg  cus_btn" style="width: 100%;"><span class="button" style="font-size: 20px !important;">Proceed  <span *ngIf="load" style="width: 20px; height: 20px;font-size: 10px;" class="spinner-border text-white"></span></span></button>
+        </div>
+        </div>
+
+      </div>
+     
+
+     </div>
+   
+   
+  </ng-template>
+
+
+
+
+  
+  <ng-template #update let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">UPDATE ADDRESS</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-lg 12 col-md-12">
+            <label for="inputEmail4" class="button subheadingColor">Enter Address</label>   
+            <div class="input-group">
+                <input id="add" [(ngModel)]="address"  class="form-control p-4" maxlength="20"  placeholder="Type your Address" style="border-radius: 5px;">    
+            </div> 
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-12 col-lg 12 col-md-12">
+            <label for="inputEmail4" class="button subheadingColor">Enter Flatno</label>   
+            <div class="input-group">
+                <input id="flat_no" [(ngModel)]="flatno"  class="form-control p-4" maxlength="20"  placeholder="Type your Flatno" style="border-radius: 5px;">    
+            </div> 
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-12 col-lg 12 col-md-12">
+            <label for="inputEmail4" class="button subheadingColor">Enter Landmark</label>   
+            <div class="input-group">
+                <input id="land" [(ngModel)]="landmark"  class="form-control p-4" maxlength="20"  placeholder="Type your Landmark" style="border-radius: 5px;">    
+            </div> 
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="button otp_btn mt-3" style="margin: 0 auto;">
+            <button (click)="updateTheAddress()"  type="submit" class="btn btn-primary btn-lg  cus_btn" style="width: 100%;"><span class="button" style="font-size: 20px !important;">Update  <span *ngIf="load1" style="width: 20px; height: 20px;font-size: 10px;" class="spinner-border text-white"></span></span></button>
+        </div>
+        </div>
+
+      </div>
+     
+
+     </div>
+   
+   
+  </ng-template>
+
+
+  

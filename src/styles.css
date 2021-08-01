@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@font-face {
+    font-family: "Rubik";
+    src: local("Rubik"), url(./assets/fonts/Rubik/Rubik-VariableFont_wght.ttf) format("truetype");
+}
+.header1 {
+font-family: 'Rubik';font-size: 32px;font-weight:bold;
+}
+
+.header2 {
+font-family: 'Rubik';font-size: 20px;font-weight:medium;
+}
+
+.button {
+font-family: 'Rubik';font-size: 16px;font-weight:medium;
+}
+
+.para2 {
+font-family: 'Rubik';font-size: 16px;font-weight:regular;
+}
+
+.para1 {
+font-family: 'Rubik';font-size: 14px;font-weight:regular;
+}
+
+.headingColor {
+    color: #282C40;
+}
+.subheadingColor {
+    color: #696F79;
+}
+.subheadingColor1 {
+    color: #C4C4C4;
+}
+
+.ff {
+    font-family: 'Rubik' 
+}
+
+body{
+    font-family: 'Rubik';
+}
